@@ -2,7 +2,7 @@ public class Item
 {
     public String name;
     public double price;
-    public int quanitity;
+    public int quantity;
     public Item()
     {
 
@@ -11,6 +11,16 @@ public class Item
     {
         this.name = name;
         this.price = price;
-        this.quanitity = quantity;
+        this.quantity = quantity;
+    }
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Name: " + name + "\n");
+        sb.append("Price: $" + price + "\n");
+        sb.append("Quantity: " + quantity + "\n");
+        return sb.toString();
+
     }
 }

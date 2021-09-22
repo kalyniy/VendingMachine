@@ -1,26 +1,30 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class VendingMachine
 {
+    public Map<String, Item> dictionary;
     public VendingMachine() // constructor. VendingMachine name = new VendingMachine();
     {
 
     }
     public VendingMachine(String data) // constructor. VendingMachine name = new VendingMachine(data);
     {
+        dictionary = new HashMap<String, Item>();
         String[] rows = data.split("\n");
         for(String row : rows)
         {
             String[] columns = row.split(",");
             String location = columns[0];
             String name = columns[1];
-            double price = Double.parseDouble(columns[2]);
+            String priceString = columns[2];
+            priceString = priceString.replace("$", "");
+            double price = Double.parseDouble(priceString);
             int quantity = Integer.parseInt(columns[3]);
 
-            System.out.println("Location: " + location);
-            System.out.println("Name: " + name);
-            System.out.println("Price: " + price);
-            System.out.println("Quantity" + quantity);
+            Item item = new Item(name, price, quantity);
+            dictionary.put(location, item);
 
-            System.out.println();
         }
     }
     public static void someStaticMethod()
